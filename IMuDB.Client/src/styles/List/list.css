@@ -1,0 +1,10 @@
+ul {
+    padding: 0;
+}
+
+.artist-list {
+    height: 100%;
+    margin: 0 10rem;
+    text-align: center;
+}
+

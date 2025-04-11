@@ -1,0 +1,22 @@
+.container {
+    height:100vh;
+    background-color: var(--color-white);
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+.container-banner {
+    background-color: var(--color-secondary);
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.container-body {
+    padding: 1rem 4.5rem;
+}

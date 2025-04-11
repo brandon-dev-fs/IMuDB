@@ -1,0 +1,8 @@
+.modal-content {
+    background-color: var(--color - primary);
+    margin: 8rem;
+}
+
+.modal-body {
+    padding: 2rem;
+}

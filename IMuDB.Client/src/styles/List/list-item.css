@@ -1,0 +1,19 @@
+ul > li {
+    align-items: center;
+    list-style: none;
+}
+
+.artist-list-item {
+    display: inline-block;
+    width: 100%;
+    padding: .5rem;
+    margin: .5rem;
+    border-radius: var(--border-radius);
+    background-color: white;
+    box-shadow: .5rem .5rem .5rem rgba(20,20,20,.5);
+}
+
+    .artist-list-item:hover {
+        transform: translate(-.5rem, -.2rem);
+        box-shadow: 1rem .7rem .5rem rgba(20,20,20,.4);
+    }
