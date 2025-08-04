@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 export default function AlbumCard({ album }) {
     //For on click navigation
@@ -9,15 +9,16 @@ export default function AlbumCard({ album }) {
     };
 
     return (
-        <div className="card" onClick={() => navigateOnClick(album.id)}>
-            <div className="card-title">
+        <button className="card" onClick={() => navigateOnClick(album.id)}>
+            <div className="card-header">
                 <h2>
-                    {album.name} <span>({album.year})</span>
+                    {album.name}
                 </h2>
             </div>
             <div className="card-body">
-                <p>{album.artist.name}</p>
+                <p>Artist: {album.artist.name}</p>
+                <p>Year: {album.year}</p>
             </div>
-        </div>
+        </button>
     );
 }

@@ -1,7 +1,6 @@
 ﻿using IMuDB.Domain.Interfaces.Repositories.Albums;
 using IMuDB.Domain.Interfaces.Repositories.Artist;
 using IMuDB.Domain.Interfaces.Repositories.Songs;
-using IMuDB.Infrastructure;
 using IMuDB.Infrastructure.Repositories.Albums;
 using IMuDB.Infrastructure.Repositories.Artist;
 using IMuDB.Infrastructure.Repositories.Songs;

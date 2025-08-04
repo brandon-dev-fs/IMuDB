@@ -1,7 +1,6 @@
 ﻿using IMuDB.Domain.Entities.Albums;
 using IMuDB.Domain.Entities.Artists;
 using IMuDB.Domain.Interfaces.Repositories.Artist;
-using IMuDB.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace IMuDB.Infrastructure.Repositories.Artist

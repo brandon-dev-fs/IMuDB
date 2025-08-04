@@ -1,0 +1,5 @@
+.active:not(.header-logo_link){
+    border-bottom: .40rem solid var(--color-primary);
+    cursor: default;
+    color: var(--color-primary);
+}

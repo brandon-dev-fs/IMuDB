@@ -1,0 +1,13 @@
+.header {
+    background-color: var(--color-black-pure);
+}
+
+.header-logo_link {
+    display: inline-block;
+    height: var(--logo-img-small);
+    line-height:0;
+}
+
+.header-logo_img {
+    height: var(--logo-img-small);
+}

@@ -1,20 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { getArtistById } from '../../services/httprequest';
 import Loading from '../loading/loading';
-import { useNavigate } from 'react-router-dom';
-
+import AlbumList from '../album/albumlist';
 export default function ArtistDetailsPage() {
     const params = useParams();
     const artistId = params.id;
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
     const [artist, setArtist] = useState({});
-
-    const navigate = useNavigate();
-    const navigateOnClick = (id) => {
-        navigate(`/albums/${id}`);
-    };
 
     useEffect(() => {
         getArtistById(artistId)
@@ -26,49 +19,38 @@ export default function ArtistDetailsPage() {
             .catch(e => {
                 console.log(e)
                 setLoading(false);
-                setError(true);
             });
     }, []);
 
-
-
-    if (loading || error) {
+    if (loading) {
         return (<div>
             {loading && <Loading />}
-            {error && <h2>Error</h2>}
         </div>
         );
     } else {
-        return (<div className="container">
-            <div className="container-banner">
-                <h2>{artist.name}</h2><span>({artist.type === 0 ? "Solo" : "Band"})</span>
-            </div>
-            <div className="container-body">
-                <div className="details-contents">
-                    <div>
-                        <h2>Musicians</h2>
-                        {artist.musicians && (
-                            <ul>
-                                {artist.musicians.map((m, i) => (
-                                    <li key={i}>{m}</li>
-                                ))}
-                            </ul>
-                        )}
+        return (
+            <article className="page">
+                <div className="page-heading">
+                    <h2>{artist.name}</h2><span>({artist.type === 0 ? "Solo" : "Band"})</span>
+                </div>
+                <section className="page-content flex space-evenly">
+                    <div className="page-content_section col-top">
+                            <h2>Musicians</h2>
+                            {artist.musicians && (
+                                <ul>
+                                    {artist.musicians.map((m, i) => (
+                                        <li key={i}>{m}</li>
+                                    ))}
+                                </ul>
+                            )}
                     </div>
-                    <div>
+                    <div className="page-content_section col-top">
                         <h2>Albums</h2>
                         {artist.albums.length > 0 && (
-                            <ul>
-                                {artist.albums.map((a) => (
-                                    <li className="clickable" key={a.id} onClick={() => navigateOnClick(a.id)} >
-                                        {a.name} ({a.year})
-                                    </li>
-                                ))}
-                            </ul>
+                            <AlbumList albums={artist.albums.sort((a, b) => a.year - b.year)} />
                         )}
                     </div>
-                </div>
-            </div>
-        </div>)
+                </section>
+            </article>)
     }
 }

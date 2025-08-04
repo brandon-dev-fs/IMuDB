@@ -1,6 +1,5 @@
 ﻿using IMuDB.Domain.DTOs.Return.Album;
 using IMuDB.Domain.Entities.Albums;
-using IMuDB.Infrastructure.Extensions;
 
 namespace IMuDB.Infrastructure.Extensions
 {

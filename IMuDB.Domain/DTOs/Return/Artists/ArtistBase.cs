@@ -1,5 +1,4 @@
-﻿using IMuDB.Domain.DTOs.Return;
-using IMuDB.Domain.Entities.Artists;
+﻿using IMuDB.Domain.Entities.Artists;
 
 namespace IMuDB.Domain.DTOs.Return.Artists
 {

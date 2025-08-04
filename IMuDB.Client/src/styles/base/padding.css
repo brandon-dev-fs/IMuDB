@@ -1,0 +1,84 @@
+.p-s {
+    padding: var(--padding-small);
+}
+
+.p-x-s {
+    padding-top: var(--padding-small);
+    padding-bottom: var(--padding-small);
+}
+
+.p-y-s {
+    padding-right: var(--padding-small);
+    padding-left: var(--padding-small);
+}
+
+.p-m {
+    padding: 5rem;
+}
+
+.p-x-m {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.p-y-m {
+    padding-right: 5rem;
+    padding-left: 5rem;
+}
+
+.p-l {
+    padding: var(--padding-large);
+}
+
+.p-x-l {
+    padding-top: var(--padding-large);
+    padding-bottom: var(--padding-large);
+}
+
+.p-y-l {
+    padding-right: var(--padding-large);
+    padding-left: var(--padding-large);
+}
+
+/*Margin*/
+.m-s {
+    margin: var(--margin-small);
+}
+
+.m-x-s {
+    margin-top: var(--margin-small);
+    margin-bottom: var(--margin-small);
+}
+
+.m-y-s {
+    margin-right: var(--margin-small);
+    margin-left: var(--margin-small);
+}
+
+.m-m {
+    margin: 5rem;
+}
+
+.m-x-m {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.m-y-m {
+    margin-right: 5rem;
+    margin-left: 5rem;
+}
+
+.m-l {
+    margin: var(--margin-large);
+}
+
+.m-x-l {
+    margin-top: var(--margin-large);
+    margin-bottom: var(--margin-large);
+}
+
+.m-y-l {
+    margin-right: var(--margin-large);
+    margin-left: var(--margin-large);
+}

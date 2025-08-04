@@ -1,7 +1,9 @@
 import React from "react";
 
 export default function Loading() {
-    return (<div className="loading-screen">
-        <p className="loading-text">Loading ...</p>
-    </div>)
+    return (
+        <section className="loading">
+            <p className="loading-text">Loading ...</p>
+        </section>
+    )
 }

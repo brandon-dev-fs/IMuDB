@@ -3,8 +3,8 @@ import Navbar from './Navbar';
 
 export default function Header() {
 	return (
-		<div className="header">
+		<header className="header p-y-l">
 			<Navbar />
-		</div>
+		</header>
 	);
 }

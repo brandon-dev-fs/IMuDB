@@ -1,0 +1,25 @@
+button{
+  border: none;
+}
+
+.btn-text {
+    color: var(--color-black-pure);
+    text-decoration: none;
+}
+
+    .btn-text:hover{
+        text-decoration:underline;
+    }
+
+.btn-nav {
+    color: var(--color-white-pure);
+    font-weight: 600;
+}
+
+    .btn-nav:hover {
+        text-decoration: none;
+    }
+
+    .btn-nav:hover:not(.active) {
+        color: var(--color-primary);
+    }

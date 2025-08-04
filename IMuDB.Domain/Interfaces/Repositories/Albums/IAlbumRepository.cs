@@ -1,5 +1,4 @@
 ﻿using IMuDB.Domain.Entities.Albums;
-using IMuDB.Domain.Interfaces.Repositories;
 
 namespace IMuDB.Domain.Interfaces.Repositories.Albums
 {

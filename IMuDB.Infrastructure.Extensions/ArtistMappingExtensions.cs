@@ -1,7 +1,5 @@
 ﻿using IMuDB.Domain.DTOs.Return.Artists;
 using IMuDB.Domain.Entities.Artists;
-using IMuDB.Infrastructure.Extensions;
-using IMuDB.Infrastructure.Extensions;
 
 namespace IMuDB.Infrastructure.Extensions
 {

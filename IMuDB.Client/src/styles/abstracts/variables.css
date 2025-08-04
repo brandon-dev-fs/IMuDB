@@ -1,0 +1,43 @@
+:root {
+    /* Colors */
+    /*60 30 10 rule*/
+    /*60% Primary domain color ie. backgrounds*/
+    /*30% Typography*/
+    /*10% Bright Vibrant color to grab attention*/
+    --color-white-pure: #FFFFFF;
+    --color-grey-dark: #686868;
+    --color-grey-light: #E5E5E5;
+    --color-black-pure: #000000;
+    --color-primary: #CB4F12;
+    --color-primary-rgba-half: rgba(203, 79, 18, 0.5);
+    --color-secondary: #128ECB;
+    /* Font Size */
+    --default-font-size: 1.6rem;
+    --header-1-font-size: 2.8rem;
+    --header-2-font-size: 2.2rem;
+    --header-3-font-size: 2.0rem;
+    /*Image Sizes*/
+    --logo-img-small: 5rem;
+    --logo-img-medium: 10rem;
+    --logo-img-large: 20rem;
+    /*Padding and Margin Sizes*/
+    --padding-small: 1.5rem;
+    --padding-medium: 6.75rem;
+    --padding-large: 15rem;
+    --margin-small: 1.5rem;
+    --margin-medium: 6.75rem;
+    --margin-large: 15rem;
+}
+
+
+/* 
+    Old palette
+    -color-black: #2E3138;
+    --color-grey: #898889;
+    --color-primary: #BB7743;
+    --color-primary-rgb: 187, 119, 67;
+    --color-primary-light: #C99369;
+    --color-primary-light-rgb: 201, 147, 105;
+    --color-secondary: #55868C;
+    --color-white: #E4DFDA;
+*/

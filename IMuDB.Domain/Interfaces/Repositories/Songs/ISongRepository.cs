@@ -1,5 +1,4 @@
 ﻿using IMuDB.Domain.Entities.Songs;
-using IMuDB.Domain.Interfaces.Repositories;
 
 namespace IMuDB.Domain.Interfaces.Repositories.Songs
 {

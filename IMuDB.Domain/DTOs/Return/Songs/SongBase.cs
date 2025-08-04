@@ -1,6 +1,4 @@
-﻿using IMuDB.Domain.DTOs.Return;
-
-namespace IMuDB.Domain.DTOs.Return.Songs
+﻿namespace IMuDB.Domain.DTOs.Return.Songs
 {
     public class SongBase : BaseReturnDto
     {

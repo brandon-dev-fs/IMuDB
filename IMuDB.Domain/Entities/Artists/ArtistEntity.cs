@@ -1,5 +1,4 @@
-﻿using IMuDB.Domain.Entities;
-using IMuDB.Domain.Entities.Albums;
+﻿using IMuDB.Domain.Entities.Albums;
 using IMuDB.Domain.Entities.Songs;
 
 namespace IMuDB.Domain.Entities.Artists

@@ -1,30 +1,29 @@
-import React from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, Routes  } from 'react-router';
 import AlbumDetailsPage from './components/album/AlbumDetailsPage';
 import AlbumsPage from './components/album/AlbumsPage';
 import ArtistDetailsPage from './components/artist/ArtistDetailsPage';
 import ArtistsPage from './components/artist/ArtistsPage';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
-import Home from './components/home/Home';
-import './styles/styles.css';
-
-
+import HomePage from './components/home/HomePage';
+import ErrorPage from './components/404/ErrorPage';
+import './styles/main.css';
 function App() {
 	return (
-		<Router>
-			<div className="page-layout">
-				<Header />
+		<>
+			<Header />
+			<main className="app-background p-y-l">
 				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/artists" element={<ArtistsPage />} />
+					<Route path="/" element={<HomePage />} />
+					<Route path="/artists" element={<ArtistsPage />}  />
 					<Route path="/artists/:id" element={<ArtistDetailsPage />} />
 					<Route path="/albums" element={<AlbumsPage />} />
 					<Route path="/albums/:id" element={<AlbumDetailsPage />} />
+					<Route path="*" element={<ErrorPage />} />
 				</Routes>
-				<Footer />
-			</div>
-		</Router>
+			</main>
+			<Footer />
+		</>
 	);
 }
 

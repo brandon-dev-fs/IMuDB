@@ -1,5 +1,4 @@
 ﻿using IMuDB.Domain.Entities.Artists;
-using IMuDB.Domain.Interfaces.Repositories;
 
 namespace IMuDB.Domain.Interfaces.Repositories.Artist
 {

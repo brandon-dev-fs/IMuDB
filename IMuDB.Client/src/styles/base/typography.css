@@ -1,0 +1,40 @@
+body {
+    font-family: "Noto Sans", sans-serif;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: var(--header-1-font-size);
+}
+
+h2 {
+    font-size: var(--header-2-font-size);
+}
+
+h3 {
+    font-size: var(--header-3-font-size);
+}
+
+h4, h5, h6, p, a, li {
+    font-size: var(--default-font-size);
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.line-height-none {
+    line-height: 0;
+}
+
+.line-height-small {
+    line-height: .8;
+}
+
+.line-height-large{
+    line-height: 3;
+}

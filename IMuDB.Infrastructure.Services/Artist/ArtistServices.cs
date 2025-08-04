@@ -57,7 +57,7 @@ namespace IMuDB.Infrastructure.Services.Artist
             {
                 Id = Guid.NewGuid(),
                 Name = artist.Name,
-                Musicians = artist.Type == ArtistType.Band ? artist.Musicians?.ToList(): new List<string> { artist.Name },
+                Musicians = artist.Type == ArtistType.Band ? artist.Musicians?.ToList() : new List<string> { artist.Name },
                 Type = artist.Type,
                 IsActive = true,
                 CreatedAt = DateTime.UtcNow,

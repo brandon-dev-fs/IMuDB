@@ -17,7 +17,7 @@ namespace IMuDB.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("ProductVersion", "9.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -28,7 +28,7 @@ namespace IMuDB.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ArtistId")
+                    b.Property<Guid?>("ArtistId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
@@ -66,7 +66,7 @@ namespace IMuDB.Infrastructure.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Musicians")
+                    b.PrimitiveCollection<string>("Musicians")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -100,6 +100,7 @@ namespace IMuDB.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Genre")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
@@ -109,6 +110,7 @@ namespace IMuDB.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Lyrics")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -134,9 +136,7 @@ namespace IMuDB.Infrastructure.Migrations
                 {
                     b.HasOne("IMuDB.Domain.Entities.Artists.ArtistEntity", "Artist")
                         .WithMany("Albums")
-                        .HasForeignKey("ArtistId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ArtistId");
 
                     b.Navigation("Artist");
                 });
