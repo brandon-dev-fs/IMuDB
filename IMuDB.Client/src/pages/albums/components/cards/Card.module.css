@@ -1,0 +1,11 @@
+.card {
+	max-width: 20rem;
+	background-color: var(--cl-grey-light);
+	box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+	cursor: default;
+	display: flex;
+	flex-direction: column;
+	border-radius: var(--br-s);
+	overflow: hidden;
+}
+

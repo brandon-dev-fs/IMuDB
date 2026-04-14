@@ -1,23 +1,22 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
 }
 
 html {
-    font-size: 62.5%;
-    background-color: var(--color-white-pure);
+	font-size: 62.5%;
+	background-color: var(--cl-white);
 }
 
-.display-contents {
+/* .display-contents {
     display: contents;
+} */
+
+#root {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
-.app-background {
-    background: var(--color-primary-rgba-half);
-}
-
-ul > li {
-    list-style: none;
-}
 

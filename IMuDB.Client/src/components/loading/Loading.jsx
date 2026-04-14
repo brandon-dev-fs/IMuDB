@@ -1,9 +1,12 @@
 import React from "react";
+import classes from "./Loading.module.css";
 
-export default function Loading() {
+function Loading() {
     return (
-        <section className="loading">
-            <p className="loading-text">Loading ...</p>
+        <section className={classes.loading}>
+            <p className={classes.loading_text}>Loading ...</p>
         </section>
     )
 }
+
+export default Loading;

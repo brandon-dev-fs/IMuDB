@@ -1,0 +1,13 @@
+.acts_sidebar_container{
+	padding-top: var(--space-xs);
+	padding-bottom: var(--space-s);
+	border-bottom: 1px solid var(--cl-grey);
+}
+
+.acts_sidebar_container:first-child{
+	padding-top: 0;
+}
+
+.acts_sidebar_container:last-child{
+	border-bottom: none;
+}

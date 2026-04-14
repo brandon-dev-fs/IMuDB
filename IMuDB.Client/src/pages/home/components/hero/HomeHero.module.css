@@ -1,0 +1,34 @@
+.hero_section {
+	height: 40vh;
+	max-width: 120rem;
+	margin: 0 auto;
+	width: 70%;
+}
+
+.hero_content {
+	flex-basis: 0;
+	flex-grow: 1;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.hero_content_heading {
+    font-size: 6.0rem;
+	color: var(--cl-primary);
+    text-transform: uppercase;
+}
+
+.hero_content_subheading {
+	color: var(--cl-grey-dark);
+	font-weight: 500;
+	margin-bottom: var(--space-s);
+}
+
+.hero_link {
+	font-size: var(--font-size-normal);
+	margin-right: 1.8rem;
+}
+
+.hero_link:last-child {
+	margin: 0;
+}

@@ -4,18 +4,26 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IMuDB.Infrastructure.Repositories.Songs
 {
-    public class SongRepository : GenericRepository<SongEntity>, ISongRepository
+    public class SongRepository(DataContext context) : GenericRepository<SongEntity>(context), ISongRepository
     {
-        public SongRepository(DataContext context) : base(context) { }
-
-        public async Task<SongEntity?> GetSongDetailsByIdAsync(Guid Id)
+        public async Task<SongEntity?> GetSongsByIdAsync(string Id)
         {
-            return await _context.Songs.Where(s => s.Id == Id).Include(s => s.Album).Include(s => s.Artist).AsNoTracking().FirstOrDefaultAsync();
+            return await _context.Songs
+                .Where(s => s.IsActive)
+                .Where(s => s.Id == Id)
+                .Include(s => s.Album)
+                .Include(s => s.Act)
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
         }
 
-        public async Task<IList<SongEntity>?> GetSongsByAlbumAsync(Guid albumId)
+        public async Task<IList<SongEntity>?> GetSongsByAlbumAsync(string albumId)
         {
-            return await _context.Songs.Where(s => s.Album.Id == albumId).AsNoTracking().ToListAsync();
+            return await _context.Songs
+                .Where(s => s.IsActive)
+                .Where(s => s.Album.Id == albumId)
+                .AsNoTracking()
+                .ToListAsync();
         }
     }
 }

@@ -17,57 +17,44 @@ namespace IMuDB.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.4")
+                .HasAnnotation("ProductVersion", "10.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("IMuDB.Domain.Entities.Albums.AlbumEntity", b =>
+            modelBuilder.Entity("ActEntityMusicianEntity", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("ActsId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<Guid?>("ArtistId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("MusiciansId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ActsId", "MusiciansId");
+
+                    b.HasIndex("MusiciansId");
+
+                    b.ToTable("ActEntityMusicianEntity");
+                });
+
+            modelBuilder.Entity("IMuDB.Domain.Entities.Acts.ActEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArtistId");
-
-                    b.ToTable("Albums");
-                });
-
-            modelBuilder.Entity("IMuDB.Domain.Entities.Artists.ArtistEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
-
-                    b.PrimitiveCollection<string>("Musicians")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -79,22 +66,60 @@ namespace IMuDB.Infrastructure.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UserEntityId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Artists");
+                    b.HasIndex("UserEntityId");
+
+                    b.ToTable("Acts");
                 });
 
-            modelBuilder.Entity("IMuDB.Domain.Entities.Songs.SongEntity", b =>
+            modelBuilder.Entity("IMuDB.Domain.Entities.Albums.AlbumEntity", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<Guid?>("AlbumId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("ActId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<Guid?>("ArtistId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserEntityId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActId");
+
+                    b.HasIndex("UserEntityId");
+
+                    b.ToTable("Albums");
+                });
+
+            modelBuilder.Entity("IMuDB.Domain.Entities.Genres.GenreEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -102,6 +127,80 @@ namespace IMuDB.Infrastructure.Migrations
                     b.Property<string>("Genre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genres");
+                });
+
+            modelBuilder.Entity("IMuDB.Domain.Entities.Instruments.InstrumentEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Instrument")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Instruments");
+                });
+
+            modelBuilder.Entity("IMuDB.Domain.Entities.Musicians.MusicianEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Musicians");
+                });
+
+            modelBuilder.Entity("IMuDB.Domain.Entities.Songs.SongEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ActId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AlbumId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("GenreId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -123,37 +222,140 @@ namespace IMuDB.Infrastructure.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UserEntityId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ActId");
 
                     b.HasIndex("AlbumId");
 
-                    b.HasIndex("ArtistId");
+                    b.HasIndex("GenreId");
+
+                    b.HasIndex("UserEntityId");
 
                     b.ToTable("Songs");
                 });
 
+            modelBuilder.Entity("IMuDB.Domain.Entities.Users.UserEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("InstrumentEntityMusicianEntity", b =>
+                {
+                    b.Property<string>("InstrumentsId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("MusiciansId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("InstrumentsId", "MusiciansId");
+
+                    b.HasIndex("MusiciansId");
+
+                    b.ToTable("InstrumentEntityMusicianEntity");
+                });
+
+            modelBuilder.Entity("ActEntityMusicianEntity", b =>
+                {
+                    b.HasOne("IMuDB.Domain.Entities.Acts.ActEntity", null)
+                        .WithMany()
+                        .HasForeignKey("ActsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("IMuDB.Domain.Entities.Musicians.MusicianEntity", null)
+                        .WithMany()
+                        .HasForeignKey("MusiciansId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("IMuDB.Domain.Entities.Acts.ActEntity", b =>
+                {
+                    b.HasOne("IMuDB.Domain.Entities.Users.UserEntity", null)
+                        .WithMany("FavoriteActs")
+                        .HasForeignKey("UserEntityId");
+                });
+
             modelBuilder.Entity("IMuDB.Domain.Entities.Albums.AlbumEntity", b =>
                 {
-                    b.HasOne("IMuDB.Domain.Entities.Artists.ArtistEntity", "Artist")
+                    b.HasOne("IMuDB.Domain.Entities.Acts.ActEntity", "Act")
                         .WithMany("Albums")
-                        .HasForeignKey("ArtistId");
+                        .HasForeignKey("ActId");
 
-                    b.Navigation("Artist");
+                    b.HasOne("IMuDB.Domain.Entities.Users.UserEntity", null)
+                        .WithMany("FavoriteAlbums")
+                        .HasForeignKey("UserEntityId");
+
+                    b.Navigation("Act");
                 });
 
             modelBuilder.Entity("IMuDB.Domain.Entities.Songs.SongEntity", b =>
                 {
+                    b.HasOne("IMuDB.Domain.Entities.Acts.ActEntity", "Act")
+                        .WithMany("Songs")
+                        .HasForeignKey("ActId");
+
                     b.HasOne("IMuDB.Domain.Entities.Albums.AlbumEntity", "Album")
                         .WithMany("Songs")
                         .HasForeignKey("AlbumId");
 
-                    b.HasOne("IMuDB.Domain.Entities.Artists.ArtistEntity", "Artist")
+                    b.HasOne("IMuDB.Domain.Entities.Genres.GenreEntity", "Genre")
                         .WithMany("Songs")
-                        .HasForeignKey("ArtistId");
+                        .HasForeignKey("GenreId");
+
+                    b.HasOne("IMuDB.Domain.Entities.Users.UserEntity", null)
+                        .WithMany("FavoriteSongs")
+                        .HasForeignKey("UserEntityId");
+
+                    b.Navigation("Act");
 
                     b.Navigation("Album");
 
-                    b.Navigation("Artist");
+                    b.Navigation("Genre");
+                });
+
+            modelBuilder.Entity("InstrumentEntityMusicianEntity", b =>
+                {
+                    b.HasOne("IMuDB.Domain.Entities.Instruments.InstrumentEntity", null)
+                        .WithMany()
+                        .HasForeignKey("InstrumentsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("IMuDB.Domain.Entities.Musicians.MusicianEntity", null)
+                        .WithMany()
+                        .HasForeignKey("MusiciansId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("IMuDB.Domain.Entities.Acts.ActEntity", b =>
+                {
+                    b.Navigation("Albums");
+
+                    b.Navigation("Songs");
                 });
 
             modelBuilder.Entity("IMuDB.Domain.Entities.Albums.AlbumEntity", b =>
@@ -161,11 +363,18 @@ namespace IMuDB.Infrastructure.Migrations
                     b.Navigation("Songs");
                 });
 
-            modelBuilder.Entity("IMuDB.Domain.Entities.Artists.ArtistEntity", b =>
+            modelBuilder.Entity("IMuDB.Domain.Entities.Genres.GenreEntity", b =>
                 {
-                    b.Navigation("Albums");
-
                     b.Navigation("Songs");
+                });
+
+            modelBuilder.Entity("IMuDB.Domain.Entities.Users.UserEntity", b =>
+                {
+                    b.Navigation("FavoriteActs");
+
+                    b.Navigation("FavoriteAlbums");
+
+                    b.Navigation("FavoriteSongs");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,21 @@
+.colors_list{
+	display: flex;
+}
+
+.color_list_item {
+	width: 4rem;
+	height: 4rem;
+}
+
+.color_list_item:last-child {
+	margin-right: 0;
+}
+
+.color_border {
+	border: 2px solid var(--cl-black);
+}
+
+
+.color_list{
+    display:flex;
+}

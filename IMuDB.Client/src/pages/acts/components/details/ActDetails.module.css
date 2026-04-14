@@ -1,0 +1,5 @@
+.act_details{
+    padding: var(--space-s);
+	overflow-y: scroll;
+	flex-grow: 4;
+}

@@ -1,0 +1,18 @@
+.input_container {
+	display: flex;
+	flex-direction: column;
+}
+
+.input_label {
+	font-size: var(--font-size-s);
+	margin-bottom: 0.4rem;
+}
+
+.select {
+	border: 1px solid var(--cl-grey-dark);
+	background-color: var(--cl-grey-light);
+	padding: 4px;
+	outline: none;
+	font-size: var(--font-size-s);
+	color: var(--cl-grey);
+}

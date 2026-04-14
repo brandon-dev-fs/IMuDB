@@ -4,9 +4,9 @@ namespace IMuDB.Domain.Interfaces.Repositories.Albums
 {
     public interface IAlbumRepository : IGenericRepository<AlbumEntity>
     {
-        Task<IList<AlbumEntity>?> GetAllAlbumsAsync();
-        Task<IList<AlbumEntity>?> GetAllByArtistAsync(Guid artistId);
-        Task<AlbumEntity?> GetAlbumByIdAsync(Guid Id);
-        Task<AlbumEntity?> GetAlbumByNameAndArtistAsync(string name, Guid artistId);
+        Task<IEnumerable<AlbumEntity>?> GetAllAlbumsAsync();
+        Task<IEnumerable<AlbumEntity>?> GetAllByMusicianAsync(string artistId);
+        Task<AlbumEntity?> GetAlbumByIdAsync(string Id);
+        Task<AlbumEntity?> UniqueAlbumCheckAsync(string name, string artistId);
     }
 }

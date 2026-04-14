@@ -1,0 +1,5 @@
+.card_title {
+	text-align: center;
+	font-size: var(--font-size-s);
+	margin-bottom: var(--space-s);
+}

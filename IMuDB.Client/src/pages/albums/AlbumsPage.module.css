@@ -1,0 +1,14 @@
+/*@import '/src/styles/main.css';*/
+
+/*.album_grid, .album_filters {
+    background: none;
+}
+
+.album_filters{
+
+}*/
+
+.album_grid_container {
+	padding: var(--space-m);
+	padding-top: 0;
+}

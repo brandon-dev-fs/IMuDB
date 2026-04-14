@@ -4,145 +4,147 @@ const ROOT_API = 'https://localhost:4000/api/';
 //GET
 //	/ api / Album X
 const getAlbums = async () => {
-    return fetch(`${ROOT_API}album`)
-		.then(res => res.json())
-        .catch(err => console.log(err));
-}
+	return fetch(`${ROOT_API}album`)
+		.then((res) => res.json())
+		.catch((err) => console.error(err));
+};
 
 //GET
 //	/ api / Album / { albumId } X
 const getAlbumById = async (albumId) => {
 	return fetch(`${ROOT_API}album/${albumId}`)
-		.then(res => res.json())
-		.catch(err => console.log(err));
-}
+		.then((res) => res.json())
+		.catch((err) => console.error(err));
+};
 
 //GET
 //	/ api / Album / { albumId } / song / { songId }
 const getSongById = async (albumId, songId) => {
 	return fetch(`${ROOT_API}album/${albumId}/song/${songId}`)
-		.then(res => res.json())
-		.catch(err => console.log(err));
-}
+		.then((res) => res.json())
+		.catch((err) => console.error(err));
+};
 
 //GET
-//	/ api / Artist X
-const getArtist = async () => {
-	return fetch(`${ROOT_API}artist`)
-		.then(res => res.json())
-		.catch(err => console.log(err));
-}
+//	/ api / Act X
+const getAct = async () => {
+	return fetch(`${ROOT_API}act`)
+		.then((res) => res.json())
+		.catch((err) => console.error(err));
+};
 
 //GET
-//	/ api / Artist / { artistId } X
-const getArtistById = async (artistId) => {
-	return fetch(`${ROOT_API}artist/${artistId}`)
-		.then(res => res.json())
-		.catch(err => console.log(err));
-}
+//	/ api / Act / { actId } X
+const getActById = async (actId) => {
+	return fetch(`${ROOT_API}act/${actId}`)
+		.then((res) => res.json())
+		.catch((err) => console.error(err));
+};
 
 // Puts
 //PUT
 //	/ api / Album / { albumId } X
 const updateAlbum = async (albumId, body) => {
 	return fetch(`${ROOT_API}album/${albumId}`, {
-		method: "Put",
+		method: 'Put',
 		headers: {
-			"Content-Type": "application/json",
+			'Content-Type': 'application/json',
 		},
-        body: JSON.stringify(body),
+		body: JSON.stringify(body),
 	})
-	.then(res => res.json())
-	.catch(err => console.log(err));
-}
+		.then((res) => res.json())
+		.catch((err) => console.error(err));
+};
 //PUT
 //	/ api / Album / { albumId } / song / { songId }
 const updateSong = async (albumId, songId, body) => {
 	return fetch(`${ROOT_API}album/${albumId}/song/${songId}`, {
-		method: "Put",
+		method: 'Put',
 		headers: {
-			"Content-Type": "application/json",
+			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify(body),
 	})
-	.then(res => res.json())
-	.catch(err => console.log(err));
-}
+		.then((res) => res.json())
+		.catch((err) => console.error(err));
+};
 //PUT
-//	/ api / Artist / { artistId }
-const updateArtist = async (artistId, body) => {
-	return fetch(`${ROOT_API}artist/${artistId}`, {
-		method: "Put",
+//	/ api / Act / { actId }
+const updateAct = async (actId, body) => {
+	return fetch(`${ROOT_API}act/${actId}`, {
+		method: 'Put',
 		headers: {
-			"Content-Type": "application/json",
+			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify(body),
 	})
-	.then(res => res.json())
-	.catch(err => console.log(err));
-}
+		.then((res) => res.json())
+		.catch((err) => console.error(err));
+};
 
 // Post
 //POST
 //	/ api / Album
 const addAlbum = async (body) => {
 	return fetch(`${ROOT_API}album`, {
-		method: "Post",
+		method: 'Post',
 		headers: {
-			"Content-Type": "application/json",
+			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify(body),
 	})
-	.then(res => res.json())
-	.catch(err => console.log(err));
-}
+		.then((res) => res.json())
+		.catch((err) => console.error(err));
+};
 
 //POST
-//	/ api / Artist
-const addArtist = async (body) => {
-	return fetch(`${ROOT_API}artist`, {
-		method: "Post",
+//	/ api / Act
+const addAct = async (body) => {
+	return fetch(`${ROOT_API}act`, {
+		method: 'Post',
 		headers: {
-			"Content-Type": "application/json",
+			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify(body),
 	})
-	.then(res => res.json())
-	.catch(err => console.log(err));
-}
+		.then((res) => res.json())
+		.catch((err) => console.error(err));
+};
 
 // Deletes
 //DELETE
 //	/ api / Album / { albumId }
 const deleteAlbum = async (albumId) => {
 	return fetch(`${ROOT_API}album/${albumId}`, {
-		method: "Delete"
+		method: 'Delete',
 	})
-	.then(res => res.json())
-	.catch(err => console.log(err));
-}
+		.then((res) => res.json())
+		.catch((err) => console.error(err));
+};
 
 //DELETE
-//	/ api / Artist / { artistId }
-const deleteArtist = async (artistId) => {
-	return fetch(`${ROOT_API}artist/${artistId}`, {
-		method: "Delete"
+//	/ api / Act / { actId }
+const deleteAct = async (actId) => {
+	return fetch(`${ROOT_API}act/${actId}`, {
+		method: 'Delete',
 	})
-	.then(res => res.json())
-	.catch(err => console.log(err));
-}
+		.then((res) => res.json())
+		.catch((err) => console.error(err));
+};
+
+// Auth
 
 export {
-	getAlbums,
-	getArtist,
+	addAct,
+	addAlbum,
+	deleteAct,
+	deleteAlbum,
+	getAct,
+	getActById,
 	getAlbumById,
+	getAlbums,
 	getSongById,
-	getArtistById,
+	updateAct,
 	updateAlbum,
 	updateSong,
-	updateArtist,
-	addAlbum,
-	addArtist,
-	deleteAlbum,
-	deleteArtist
-}
+};

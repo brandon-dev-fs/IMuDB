@@ -1,139 +1,100 @@
-﻿using IMuDB.Domain.DTOs.CreateUpdate.Albums;
-using IMuDB.Domain.DTOs.CreateUpdate.Songs;
-using IMuDB.Domain.DTOs.Return.Album;
-using IMuDB.Domain.DTOs.Return.Songs;
+﻿using IMuDB.API.Filters.ValidationFilters;
+using IMuDB.Domain.DTOs.Album.Request;
+using IMuDB.Domain.DTOs.Album.Response;
 using IMuDB.Domain.Interfaces.Services.Album;
-using IMuDB.Domain.Interfaces.Services.Song;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IMuDB.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlbumController : ControllerBase
+    public class AlbumController(ILogger<AlbumController> logger, IAlbumService albumService) : ControllerBase
     {
-        private readonly IAlbumService _albumServices;
-        private readonly ISongService _songServices;
-
-        public AlbumController(IAlbumService albumServices, ISongService songServices)
-        {
-            _albumServices = albumServices;
-            _songServices = songServices;
-        }
-
         [HttpGet]
-        public async Task<ActionResult<IList<AlbumBase>>> GetAllAlbums([FromQuery] Guid? artistId)
+        [ProducesResponseType<IEnumerable<AlbumBaseResponse>>(200)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult> GetAlbumsAsync([FromQuery] string? actId)
         {
             try
             {
-                if (artistId != null)
-                {
-                    return Ok(await _albumServices.GetAllAlbumsByArtistAsync((Guid)artistId));
-                }
-                else
-                {
-                    return Ok(await _albumServices.GetAllAlbumsAsync());
-                }
+                IEnumerable<AlbumBaseResponse> albums = await (!string.IsNullOrEmpty(actId) ? albumService.GetAlbumsByMusicianAsync(actId) : albumService.GetAlbumsAsync());
+
+                return Ok(albums);
             }
             catch (Exception ex)
             {
+                logger.LogError("{Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
 
-        [HttpGet("{albumId}")]
-        public async Task<ActionResult<AlbumDetails>> GetAlbumById(Guid albumId)
+        [HttpGet("{albumId}", Name = "GetAlbumByIdAsync")]
+        [ProducesResponseType<AlbumDetailsResponse>(200)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult> GetAlbumByIdAsync([FromRoute] string albumId)
         {
             try
             {
-                var album = await _albumServices.GetAlbumByIdAsync(albumId);
+                AlbumDetailsResponse? album = await albumService.GetAlbumByIdAsync(albumId);
                 return Ok(album);
             }
             catch (Exception ex)
             {
+                logger.LogError("{Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
 
         [HttpPost]
-        public async Task<ActionResult<Guid>> CreateAlbum([FromBody] AlbumCU newAlbum)
+        [ModelValidationFilter]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult> CreateAlbumAsync([FromBody] AlbumCreateRequest createAlbumRequest)
         {
             try
             {
-                var albumId = await _albumServices.CreateAlbumAsync(newAlbum);
-                return Ok(albumId);
+                AlbumDetailsResponse createdAlbum = await albumService.CreateAlbumAsync(createAlbumRequest);
+                return CreatedAtRoute(nameof(GetAlbumByIdAsync), new { id = createdAlbum.Id?.ToString(), createdAlbum });
             }
             catch (Exception ex)
             {
+                logger.LogError("{Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
 
         [HttpPut("{albumId}")]
-        public async Task<ActionResult> UpdateAlbum(Guid albumId, [FromBody] AlbumCU updateAlbum)
+        [ModelValidationFilter]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [AlbumUpdateRequestIdValidationFilter]
+        public async Task<ActionResult> UpdateAlbumAsync([FromRoute] string albumId, [FromBody] AlbumUpdateRequest updateAlbumRequest)
         {
             try
             {
-                await _albumServices.UpdateAlbumAsync(albumId, updateAlbum);
+                await albumService.UpdateAlbumAsync(albumId, updateAlbumRequest);
                 return NoContent();
             }
             catch (Exception ex)
             {
+                logger.LogError("{Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
 
         [HttpDelete("{albumId}")]
-        public async Task<ActionResult> DeleteAlbum(Guid albumId)
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult> DeleteAlbumAsync([FromRoute] string albumId)
         {
             try
             {
-                await _albumServices.DeleteAlbumAsync(albumId);
+                await albumService.DeleteAlbumAsync(albumId);
                 return NoContent();
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// Gets the details for a specific song based on song Id
-        /// </summary>
-        /// <param name="songId"></param>
-        /// <returns></returns>
-        [Route("{albumId}/song/{songId}")]
-        [HttpGet]
-        public async Task<ActionResult<SongDetails>> GetSongDetails(Guid albumId, Guid songId)
-        {
-            try
-            {
-                var song = await _songServices.GetSongByIdAsync(songId);
-                return Ok(song);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-
-        }
-
-        /// <summary>
-        /// Allows update to song entity for lyrics, genere, other non key fields
-        /// </summary>
-        /// <param name="updateSong"></param>
-        /// <returns></returns>
-        [Route("{albumId}/song/{songId}")]
-        [HttpPut]
-        public async Task<ActionResult> UpdateSong(Guid albumId, Guid songId, [FromBody] SongCU updateSong)
-        {
-            try
-            {
-                await _songServices.UpdateSongAsync(songId, updateSong);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
+                logger.LogError("{Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }

@@ -4,7 +4,7 @@ namespace IMuDB.Domain.Interfaces.Repositories.Songs
 {
     public interface ISongRepository : IGenericRepository<SongEntity>
     {
-        Task<SongEntity?> GetSongDetailsByIdAsync(Guid Id);
-        Task<IList<SongEntity>?> GetSongsByAlbumAsync(Guid albumId);
+        Task<SongEntity?> GetSongsByIdAsync(string Id);
+        Task<IList<SongEntity>?> GetSongsByAlbumAsync(string albumId);
     }
 }

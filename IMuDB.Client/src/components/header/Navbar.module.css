@@ -1,0 +1,15 @@
+.nav_btn:link,
+.nav_btn:visited {
+	color: var(--cl-grey-dark);
+	font-weight: 600;
+	font-size: var(--font-size-s);
+}
+
+.nav_btn:hover,
+.nav_btn:active {
+	color: var(--cl-primary);
+}
+
+.nav_logo_image {
+	width: var(--img-xs);
+}

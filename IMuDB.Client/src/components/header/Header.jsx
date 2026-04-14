@@ -1,10 +1,11 @@
-
+import classes from './Header.module.css';
 import Navbar from './Navbar';
-
-export default function Header() {
+function Header() {
 	return (
-		<header className="header p-y-l">
+		<header className={`${classes.header}`}>
 			<Navbar />
 		</header>
 	);
 }
+
+export default Header

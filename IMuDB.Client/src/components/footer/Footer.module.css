@@ -1,0 +1,23 @@
+footer {
+	margin-top: var(--space-m);
+	background-color: var(--cl-grey-light);
+	padding: var(--space-s);
+}
+
+.footer_icon {
+	font-size: var(--font-size-normal);
+}
+
+.footer_logo:hover {
+	animation: rotate_logo 1.5s linear infinite;
+}
+
+@keyframes rotate_logo {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}

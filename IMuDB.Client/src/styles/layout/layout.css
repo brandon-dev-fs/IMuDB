@@ -1,0 +1,123 @@
+/**************/
+/*   Flexbox  */
+/**************/
+.flex {
+	display: flex;
+}
+
+/* Wrap and Direction classes */
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+.direction-column {
+	flex-direction: column;
+}
+
+/* Alignment */
+.align-top {
+	align-items: flex-start;
+}
+
+.align-bottom {
+	align-items: flex-end;
+}
+
+/* Spacing classes */
+.space-between {
+	justify-content: space-between;
+}
+
+.space-around {
+	justify-content: space-around;
+}
+
+.space-evenly {
+	justify-content: space-evenly;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+.justify-end {
+	justify-content: end;
+}
+
+/* Flex item classes */
+/* .flex-grow {
+    flex-grow: 1;
+} */
+
+/**************/
+/*    Grid    */
+/**************/
+.grid {
+	display: grid;
+}
+
+/* Grid alignment */
+.items-center {
+	justify-items: center;
+}
+
+/* Grid Column Numbers */
+.grid-col-2 {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-col-3 {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-col-4 {
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-col-5 {
+	grid-template-columns: repeat(5, 1fr);
+}
+
+.grid-col-6 {
+	grid-template-columns: repeat(6, 1fr);
+}
+
+/* Grid Rows Numbers */
+.grid-row-2 {
+	grid-template-rows: repeat(2, 1fr);
+}
+
+/* Grid items */
+.grid-item-row {
+	grid-column: 1/-1;
+}
+
+/**************/
+/*   Shared   */
+/**************/
+
+/* Alignment classes */
+.align-center {
+	align-items: center;
+}
+
+/* Gapping */
+.gap-xs {
+	gap: var(--space-xs);
+}
+
+.gap-s {
+	gap: var(--space-s);
+}
+
+.gap-m {
+	gap: var(--space-m);
+}
+
+.gap-l {
+	gap: var(--space-l);
+}
+
+.gap-xl {
+	gap: var(--space-xl);
+}

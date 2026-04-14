@@ -1,0 +1,12 @@
+.footer_link:link,
+.footer_link:visited {
+	color: var(--cl-grey-dark);
+	font-size: var(--font-size-xxs);
+	line-height: 1.8;
+}
+
+.footer_link:hover,
+.footer_link:active {
+	color: var(--cl-secondary);
+	text-decoration: underline;
+}

@@ -1,63 +1,18 @@
-﻿using IMuDB.Domain.DTOs.CreateUpdate.Songs;
-using IMuDB.Domain.DTOs.Return.Songs;
+﻿using IMuDB.Domain.DTOs.Songs.Response;
+using IMuDB.Domain.Entities.Songs;
 using IMuDB.Domain.Interfaces.Repositories.Songs;
 using IMuDB.Domain.Interfaces.Services.Song;
-using IMuDB.Infrastructure.Extensions;
+using IMuDB.Infrastructure.Extensions.Mapping.Song;
 
 namespace IMuDB.Infrastructure.Services.Song
 {
-    public class SongServices : ISongService
+    public class SongServices(ISongRepository songRepository)
+        : ISongService
     {
-        protected readonly ISongRepository _songRepository;
-
-        public SongServices(ISongRepository songRepository)
+        public async Task<SongDetailsResponse?> GetSongById(string songId)
         {
-            _songRepository = songRepository;
-        }
-
-        public async Task<IList<SongBase>?> GetAllSongsAsync()
-        {
-            var songs = await _songRepository.GetAllAsync();
-            var formattedSongs = songs.Select(_ => _.ToBaseDto()).ToList();
-            return formattedSongs;
-        }
-
-        public async Task<IList<SongBase>?> GetAllSongsByAlbumAsync(Guid albumId)
-        {
-            var songs = await _songRepository.GetSongsByAlbumAsync(albumId);
-            var formattedSongs = songs?.Select(_ => _.ToBaseDto()).ToList();
-            return formattedSongs;
-        }
-
-        public async Task<SongDetails> GetSongByIdAsync(Guid Id)
-        {
-            var song = await _songRepository.GetSongDetailsByIdAsync(Id);
-
-            if (song == null)
-            {
-                throw new Exception($"Song could not be found with {Id}");
-            }
-
-            return song.ToDetailedDto();
-        }
-
-        /// <summary>
-        /// Song update only allows for lyric updates
-        /// </summary>
-        /// <returns></returns>
-        public async Task UpdateSongAsync(Guid Id, SongCU data)
-        {
-            var updateSong = await _songRepository.GetByIdAsync(Id);
-
-            if (updateSong == null)
-            {
-                throw new Exception("Song could not be found with Id");
-            }
-
-            updateSong.Lyrics = data.Lyrics;
-            updateSong.UpdatedAt = DateTime.UtcNow;
-
-            await _songRepository.UpdateEntityAsync(updateSong);
+            SongEntity? song = await songRepository.GetSongsByIdAsync(songId);
+            return song?.ToDetailedDto();
         }
     }
 }

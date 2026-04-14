@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.9.34728.123
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11626.88 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{7EED1243-8596-4B72-9C49-3BDA39C4D0B4}"
 EndProject
@@ -27,6 +27,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMuDB.Infrastructure.Extensions", "IMuDB.Infrastructure.Extensions\IMuDB.Infrastructure.Extensions.csproj", "{2B6C79F8-CBDC-008A-046E-00ED795BC446}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMuDB.Infrastructure.Services", "IMuDB.Infrastructure.Services\IMuDB.Infrastructure.Services.csproj", "{415564FF-FF7D-FA5C-99F4-E289DB191408}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Back End", "Back End", "{A73DA81C-7A5B-4726-82FA-E3F3BCDE7431}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{7EED1243-8596-4B72-9C49-3BDA39C4D0B4} = {A73DA81C-7A5B-4726-82FA-E3F3BCDE7431}
+		{1467265D-E9E6-40F9-8CE4-169141DBE7F0} = {A73DA81C-7A5B-4726-82FA-E3F3BCDE7431}
+		{E8731643-8C63-4B8C-95A6-18658BC61FED} = {A73DA81C-7A5B-4726-82FA-E3F3BCDE7431}
 		{813E651D-76DA-0EA6-45D6-B8AB70D383DD} = {7EED1243-8596-4B72-9C49-3BDA39C4D0B4}
 		{FD138952-5337-9B93-EAB5-2E7C10141F59} = {1467265D-E9E6-40F9-8CE4-169141DBE7F0}
 		{135843B0-BF37-22B9-4353-F7E030764B0E} = {FD329D10-EEFD-4E71-AC03-E3006B5ACFEC}

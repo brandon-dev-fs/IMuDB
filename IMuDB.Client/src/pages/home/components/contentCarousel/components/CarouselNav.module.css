@@ -1,0 +1,13 @@
+.bubble {
+	height: var(--space-xxs);
+	width: var(--space-xxs);
+	border-radius: 50%;
+}
+
+.active_bubble {
+	background-color: var(--cl-primary);
+}
+
+.inactive_bubble {
+	background-color: var(--cl-grey-light);
+}

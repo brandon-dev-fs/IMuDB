@@ -1,0 +1,5 @@
+.brand_section {
+    padding: var(--space-m);
+    background-color: var(--cl-white);
+    border-radius: var(--br-s);
+}

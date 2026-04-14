@@ -1,0 +1,16 @@
+.acts_list {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: var(--space-xs);
+}
+
+.acts_list_item {
+	font-size: var(--font-size-s);
+	transition: all 250ms;
+}
+
+.acts_list_item:hover {
+	cursor: pointer;
+	color: var(--cl-secondary);
+}

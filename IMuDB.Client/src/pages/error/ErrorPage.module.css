@@ -1,0 +1,10 @@
+/*@import '/src/styles/main.css';*/
+
+.error_page_message {
+    color: var(--cl-secondary);
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

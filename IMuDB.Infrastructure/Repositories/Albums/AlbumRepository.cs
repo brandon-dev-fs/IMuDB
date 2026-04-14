@@ -4,28 +4,46 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IMuDB.Infrastructure.Repositories.Albums
 {
-    public class AlbumRepository : GenericRepository<AlbumEntity>, IAlbumRepository
+    public class AlbumRepository(DataContext context) : GenericRepository<AlbumEntity>(context), IAlbumRepository
     {
-        public AlbumRepository(DataContext context) : base(context) { }
-
-        public async Task<IList<AlbumEntity>?> GetAllAlbumsAsync()
+        public async Task<IEnumerable<AlbumEntity>?> GetAllAlbumsAsync()
         {
-            return await _context.Albums.Include(a => a.Artist).Include(a => a.Songs.OrderBy(s => s.Track)).AsNoTracking().ToListAsync();
+            return await _context.Albums
+                .Where(al => al.IsActive)
+                .Include(al => al.Act)
+                .Include(al => al.Songs
+                .OrderBy(s => s.Track))
+                .AsNoTracking()
+                .ToListAsync();
         }
 
-        public async Task<IList<AlbumEntity>?> GetAllByArtistAsync(Guid artistId)
+        public async Task<IEnumerable<AlbumEntity>?> GetAllByMusicianAsync(string actId)
         {
-            return await _context.Albums.Where(al => al.Artist.Id == artistId).Include(a => a.Artist).Include(a => a.Songs.OrderBy(s => s.Track)).AsNoTracking().ToListAsync();
+            return await _context.Albums
+                .Where(al => al.Act.Id == actId)
+                .Where(al => al.IsActive)
+                .Include(al => al.Act)
+                .Include(al => al.Songs.OrderBy(s => s.Track)).AsNoTracking().ToListAsync();
         }
 
-        public async Task<AlbumEntity?> GetAlbumByIdAsync(Guid Id)
+        public async Task<AlbumEntity?> GetAlbumByIdAsync(string Id)
         {
-            return await _context.Albums.Where(al => al.Id == Id).Include(a => a.Artist).Include(a => a.Songs.OrderBy(s => s.Track)).AsNoTracking().FirstOrDefaultAsync();
+            return await _context.Albums
+                .Where(al => al.Id == Id)
+                .Where(al => al.IsActive)
+                .Include(al => al.Act)
+                .Include(al => al.Songs.OrderBy(s => s.Track))
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
         }
 
-        public async Task<AlbumEntity?> GetAlbumByNameAndArtistAsync(string name, Guid artistId)
+        public async Task<AlbumEntity?> UniqueAlbumCheckAsync(string name, string actId)
         {
-            return await _context.Albums.Where(al => al.Artist.Id == artistId && al.Name == name).Include(a => a.Songs.OrderBy(s => s.Track)).AsNoTracking().FirstOrDefaultAsync();
+            return await _context.Albums
+                .Where(al => al.Act.Id == actId && al.Name == name && al.IsActive)
+                .Include(al => al.Songs.OrderBy(s => s.Track))
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
         }
     }
 }

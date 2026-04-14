@@ -1,0 +1,16 @@
+.modal_header {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.modal_header button {
+	background: none;
+	color: var(--cl-grey-dark);
+}
+
+.modal_header button:hover {
+	background: none;
+	color: var(--cl-grey-light);
+}

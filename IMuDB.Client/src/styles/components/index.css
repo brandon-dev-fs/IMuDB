@@ -1,6 +1,5 @@
-@import "buttons.css";
-@import "nav.css";
-@import "loading.css";
-@import "card.css";
-@import 'header.css';
-@import 'error.css';
+@import 'buttons.css';
+@import 'images.css';
+@import 'list.css';
+@import 'scroll.css';
+@import 'forms.css';

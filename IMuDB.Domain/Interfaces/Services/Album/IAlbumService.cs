@@ -1,17 +1,16 @@
-﻿using IMuDB.Domain.DTOs.CreateUpdate.Albums;
-using IMuDB.Domain.DTOs.Return.Album;
+﻿
+using IMuDB.Domain.DTOs.Album.Request;
+using IMuDB.Domain.DTOs.Album.Response;
 
 namespace IMuDB.Domain.Interfaces.Services.Album
 {
     public interface IAlbumService
     {
-        Task<IList<AlbumBase>?> GetAllAlbumsAsync();
-        Task<IList<AlbumBase>?> GetAllAlbumsByArtistAsync(Guid artistId);
-        Task<AlbumDetails> GetAlbumByIdAsync(Guid Id);
-        // Start Here
-        Task<Guid> CreateAlbumAsync(AlbumCU album);
-        Task UpdateAlbumAsync(Guid Id, AlbumCU data);
-
-        Task DeleteAlbumAsync(Guid Id);
+        Task<IEnumerable<AlbumBaseResponse>> GetAlbumsByMusicianAsync(string actId);
+        Task<IEnumerable<AlbumBaseResponse>> GetAlbumsAsync();
+        Task<AlbumDetailsResponse?> GetAlbumByIdAsync(string albumId);
+        Task<AlbumDetailsResponse> CreateAlbumAsync(AlbumCreateRequest createAlbumRequest);
+        Task UpdateAlbumAsync(string albumId, AlbumUpdateRequest updateAlbumRequest);
+        Task DeleteAlbumAsync(string albumId);
     }
 }

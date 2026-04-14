@@ -1,0 +1,31 @@
+.modal {
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.modal_content {
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	background-color: var(--cl-white);
+	padding: var(--space-s);
+	border-radius: 1rem;
+	transform: translate(-50%, -50%);
+	height: var(--modal-height-medium);
+	width: var(--modal-width-medium);
+	overflow: hidden;
+}
+
+.modal_content > * {
+	width: 100%;
+}
+
+.modal_body {
+	overflow-y: auto;
+	height: 100%;
+}

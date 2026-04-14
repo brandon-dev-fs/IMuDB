@@ -1,0 +1,16 @@
+
+.card_link_container{
+    text-align: center;
+}
+
+.card_link:link,
+.card_link:visited {
+    color: var(--cl-grey-dark);
+	font-size: var(--font-size-s);
+}
+
+.card_link:hover,
+.card_link:active {
+	color: var(--cl-secondary);
+	text-decoration: underline;
+}

@@ -1,84 +1,84 @@
 .p-s {
-    padding: var(--padding-small);
-}
-
-.p-x-s {
-    padding-top: var(--padding-small);
-    padding-bottom: var(--padding-small);
+    padding: var(--space-m);
 }
 
 .p-y-s {
-    padding-right: var(--padding-small);
-    padding-left: var(--padding-small);
+    padding-top: var(--space-m);
+    padding-bottom: var(--space-m);
+}
+
+.p-x-s {
+    padding-right: var(--space-m);
+    padding-left: var(--space-m);
 }
 
 .p-m {
     padding: 5rem;
 }
 
-.p-x-m {
+.p-y-m {
     padding-top: 5rem;
     padding-bottom: 5rem;
 }
 
-.p-y-m {
+.p-x-m {
     padding-right: 5rem;
     padding-left: 5rem;
 }
 
 .p-l {
-    padding: var(--padding-large);
-}
-
-.p-x-l {
-    padding-top: var(--padding-large);
-    padding-bottom: var(--padding-large);
+    padding: var(--space-xl);
 }
 
 .p-y-l {
-    padding-right: var(--padding-large);
-    padding-left: var(--padding-large);
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
+}
+
+.p-x-l {
+    padding-right: var(--space-xl);
+    padding-left: var(--space-xl);
 }
 
 /*Margin*/
 .m-s {
-    margin: var(--margin-small);
-}
-
-.m-x-s {
-    margin-top: var(--margin-small);
-    margin-bottom: var(--margin-small);
+    margin: var(--space-m);
 }
 
 .m-y-s {
-    margin-right: var(--margin-small);
-    margin-left: var(--margin-small);
+    margin-top: var(--space-m);
+    margin-bottom: var(--space-m);
+}
+
+.m-x-s {
+    margin-right: var(--space-m);
+    margin-left: var(--space-m);
 }
 
 .m-m {
     margin: 5rem;
 }
 
-.m-x-m {
+.m-y-m {
     margin-top: 5rem;
     margin-bottom: 5rem;
 }
 
-.m-y-m {
+.m-x-m {
     margin-right: 5rem;
     margin-left: 5rem;
 }
 
 .m-l {
-    margin: var(--margin-large);
-}
-
-.m-x-l {
-    margin-top: var(--margin-large);
-    margin-bottom: var(--margin-large);
+    margin: var(--space-xl);
 }
 
 .m-y-l {
-    margin-right: var(--margin-large);
-    margin-left: var(--margin-large);
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+.m-x-l {
+    margin-right: var(--space-xl);
+    margin-left: var(--space-xl);
 }

@@ -1,7 +1,7 @@
 using IMuDB.Infrastructure.ServiceRegistrations;
 using IMuDB.Infrastructure.Services.ServiceRegistration;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
@@ -23,7 +23,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -31,6 +31,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//using (var scope = app.Services.CreateScope())
+//{
+//    var db = scope.ServiceProvider.GetRequiredService<DataContext>();
+//    await db.Database.MigrateAsync();
+//    var seeder = new DataSeeder(db);
+//    seeder.Seed();
+//}
 
 app.UseCors("allowedOrigin");
 

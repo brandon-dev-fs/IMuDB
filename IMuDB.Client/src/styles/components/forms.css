@@ -1,0 +1,43 @@
+@import '../abstracts/index.css';
+
+label {
+	font-size: var(--font-size-normal);
+	margin: 0;
+}
+
+.form {
+	padding: 0 2.5rem;
+	/*font-size: 2rem;*/
+}
+
+.form-input {
+	display: block;
+	width: 100%;
+	padding: 0.5rem 0.25rem;
+}
+
+.form-radio {
+	margin-right: var(--space-m);
+}
+
+.form-button {
+	float: right;
+	border-radius: 0.5rem;
+	border: solid 0.15rem black;
+	padding: 0.75rem;
+}
+
+.form-button:hover {
+	border: solid 0.25rem var(--cl-grey-dark);
+}
+
+.form-button:hover::after {
+	animation: fade-in 0.75s ease-in;
+	background-color: grey;
+}
+
+.form-button:active {
+	color: var(--cl-white);
+	background-color: var(--cl-secondary);
+	border: solid 0.15rem var(--cl-secondary);
+}

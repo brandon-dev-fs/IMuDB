@@ -4,40 +4,34 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IMuDB.Infrastructure.Repositories
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
+    public class GenericRepository<TEntity>(DataContext context) : IGenericRepository<TEntity> where TEntity : BaseEntity
     {
-        protected readonly DataContext _context;
+        protected readonly DataContext _context = context;
 
-        public GenericRepository(DataContext context)
-        {
-            _context = context;
-        }
-
-        public async Task<IList<TEntity>> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             // set() returns the set of a given entity type
-            return await _context.Set<TEntity>().AsNoTracking().ToListAsync();
+            return await _context.Set<TEntity>().Where(e => e.IsActive).AsNoTracking().ToListAsync();
         }
 
-        // No thrown exception for null lookups that is left to the client to decIde if exception or not
-        public async Task<TEntity?> GetByIdAsync(Guid Id)
+        // No thrown exception for null lookups that is left to the client to decide if exception or not
+        public async Task<TEntity?> GetByIdAsync(string Id)
         {
             return await _context.FindAsync<TEntity>(Id);
         }
 
-        public async Task<Guid> AddEntityAsync(TEntity entity)
+        public async Task<TEntity> AddEntityAsync(TEntity entity)
         {
             _context.Add(entity);
             await _context.SaveChangesAsync();
-            return entity.Id;
+            return entity;
         }
 
-        public async Task<Guid> UpdateEntityAsync(TEntity entity)
+        public async Task<TEntity> UpdateEntityAsync(TEntity entity)
         {
             _context.Update(entity);
-            _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-            return entity.Id;
+            return entity;
         }
 
         // Implementation for a hard delete. Soft deletes where is active is set to false are handled via an update

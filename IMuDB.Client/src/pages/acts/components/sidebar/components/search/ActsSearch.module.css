@@ -1,0 +1,14 @@
+.act_search_container{
+
+}
+
+.act_search {
+	border-radius: var(--br-s);
+	border: 1px solid var(--cl-grey);
+	padding: 0.8rem;
+}
+
+.act_search:focus,
+.act_search:focus-visible {
+	outline: 2px solid var(--cl-grey);
+}
